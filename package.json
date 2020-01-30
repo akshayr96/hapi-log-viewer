@@ -6,6 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/akshayr96/hapi-log-viewer.git"
+  },
   "author": "Akshay Ramesh",
-  "license": "MIT"
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/akshayr96/hapi-log-viewer.git/issues"
+  },
+  "homepage": "https://github.com/akshayr96/hapi-log-viewer.git"
 }
