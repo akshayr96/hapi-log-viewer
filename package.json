@@ -1,6 +1,6 @@
 {
   "name": "hapi-log-viewer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A simple log viewer for Hapi JS",
   "main": "index.js",
   "scripts": {

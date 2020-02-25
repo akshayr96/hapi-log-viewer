@@ -26,23 +26,33 @@ const getLogs = async (path, index) => {
 
 const HapiLogViewer = {
 	name: 'HapiLogViewer',
-	version: '1.0.0',
+	version: '1.0.2',
 	register: async (server, options) => {
-		const { logPath } = options
-		server.route([{
-			method: 'GET',
-			path: '/logs',
-			handler: async (request, h) => {
-				return LogTemplate
-			}
-		},{
-			method: 'GET',
-			path: '/chunk/{index}/',
-			handler: async (request, h) => {
-				const { index = 0 } = request.params
-				return await getLogs(logPath, index)
-			}
-		}]);
+		const { hapiLogViewer: { logPath, disable } } = options
+		if(!disable){
+			server.route([{
+				method: 'GET',
+				path: '/logs',
+				config: {
+					auth: false
+				},
+				handler: async (request, h) => {
+					request.skipAccessLog = true
+					return LogTemplate
+				}
+			},{
+				method: 'GET',
+				path: '/chunk/{index}/',
+				config: {
+					auth: false
+				},
+				handler: async (request, h) => {
+					request.skipAccessLog = true
+					const { index = 0 } = request.params
+					return await getLogs(logPath, index)
+				}
+			}]);
+		}
 	}
 }
 
