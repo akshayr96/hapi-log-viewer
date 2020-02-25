@@ -63,7 +63,7 @@ const template = `
 					})
 					if(logs.length) page = page + 1
 				}catch(error){
-					console.log(error)
+					console.error(error)
 				}
 				getNextPagePending = false
 			}
