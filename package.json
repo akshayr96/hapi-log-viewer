@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/akshayr96/hapi-log-viewer.git/issues"
   },
-  "homepage": "https://github.com/akshayr96/hapi-log-viewer.git"
+  "homepage": "https://github.com/akshayr96/hapi-log-viewer.git",
+  "dependencies": {
+    "fs-backwards-stream": "^1.0.0"
+  }
 }

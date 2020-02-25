@@ -33,6 +33,8 @@ const template = `
 			let lineNumber = 1
 			let getNextPagePending = false
 
+			let patchCache = ''
+
 			const generateEntryDiv = (entry) => {
 				const logDiv = document.getElementById("logs")
 				var entryDiv = document.createElement("div"); 
@@ -51,7 +53,14 @@ const template = `
 				try{
 					getNextPagePending = true
 					const logs = await getNextPage()
-					logs.forEach(entry => generateEntryDiv(entry))
+					logs.reverse().forEach((entry, i) => {
+						if(i == logs.length -1){
+							patchCache = entry
+						}else{
+							generateEntryDiv(i == 0 ? entry + patchCache : entry)
+							if(i == 0) patcheCache = ''
+						}
+					})
 					if(logs.length) page = page + 1
 				}catch(error){
 					console.log(error)

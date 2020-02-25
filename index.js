@@ -1,11 +1,11 @@
-const fs = require('fs')
+var backwardsStream = require('fs-backwards-stream')
 const LogTemplate = require('./templates/logTemplate')
 
 const getLogs = async (path, index) => {
 	return await new Promise((resolve) => {
 		try{
 			let page = 1
-			const stream = fs.createReadStream(path)
+			const stream = backwardsStream(path, { block: 3072 })
 				.on('data', (chunk) => {
 					if(page == index){
 						chunk = chunk.toString().split('\n')
